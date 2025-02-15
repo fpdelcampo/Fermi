@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5173;
+const port = process.env.PORT || 5555;
 
 // Middleware
 app.use(cors());
@@ -50,7 +50,8 @@ async function generateTargetAnswer(question: string): Promise<string> {
 	try {
 		const response = await openaiClient.createChatCompletion({
 			model: "gpt-4",
-			messages: [{ role: "user", content: `Please provide a Fermi estimate for the following question. It may help to break the problem into intermediate steps. Extract and return only the final numerical result from the following text as a plain integer, with no additional words or punctuation. Question: ${question}`}],
+			
+			messages: [{ role: "user", content: `Please provide a Fermi estimate for the following question. It may help to break the problem into intermediate steps. First, provide a detailed chain-of-thought reasoning enclosed in <think> tags. Then, provide the final numeric answer in <answer> tags, with no extra text.  For example, do not write 1 million if the answer is 1,000,000.  Intead, write 1000000. Question: ${question}`}],
 			temperature: 0.7,
 			max_tokens: 2000,
 		});
