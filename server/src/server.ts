@@ -77,6 +77,9 @@ app.get('/api/generate', async (req, res) => {
 	}
 });
 
-app.listen(port, () => {
-	console.log(`Server is running on port ${port}`);
-});
+// app.listen(port, () => {
+// 	console.log(`Server is running on port ${port}`);
+// });
+app.use(cors({ origin: "https://your-frontend.vercel.app" }));
+
+export default app;
