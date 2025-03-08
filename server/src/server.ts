@@ -80,6 +80,6 @@ app.get('/api/generate', async (req, res) => {
 // app.listen(port, () => {
 // 	console.log(`Server is running on port ${port}`);
 // });
-app.use(cors({ origin: "https://your-frontend.vercel.app" }));
+// app.use(cors({ origin: "https://server-sigma-weld.vercel.app/" }));
 
 export default app;
